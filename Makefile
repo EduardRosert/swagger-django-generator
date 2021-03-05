@@ -33,3 +33,10 @@ aiohttpdemo:
 
 clean-demo:
 	rm -rf demo
+
+docker-build:
+	docker build . --tag swagger-django-generator
+
+docker-demo:
+	[ -d "demo" ] || mkdir demo
+	docker run --rm -it -v $$(pwd)/demo/:/app/demo/ swagger-django-generator tests/resources/petstore.yaml --output-dir demo/demo/ --module-name demo
