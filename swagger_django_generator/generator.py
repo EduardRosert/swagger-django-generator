@@ -399,7 +399,8 @@ class Generator(object):
                                                               {}).items():
             schema = copy.deepcopy(definition)
             self.resolve_schema_references(schema)
-            schemas[name] = json.dumps(schema, indent=4, sort_keys=True)
+            schemas[name] = json.dumps(schema, indent=4, 
+                                       sort_keys=True).replace("\\", "\\\\")
 
         return render_to_string(
             self.backend, "schemas.py", {
