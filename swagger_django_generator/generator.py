@@ -316,7 +316,8 @@ class Generator(object):
                             self.resolve_schema_references(schema)
                             payload["body"]["schema"] = \
                                 'json.loads("""{}""")'.format(
-                                    json.dumps(schema, indent=4, sort_keys=True)
+                                    json.dumps(schema, indent=4, 
+                                               sort_keys=True).replace("\\", "\\\\")
                                 )
                     elif location == "formData":
                         payload["form_data"].append(detail)
@@ -353,7 +354,8 @@ class Generator(object):
                             self.resolve_schema_references(schema)
                             payload["response_schema"] = \
                                 'json.loads("""{}""")'.format(
-                                    json.dumps(schema, indent=4, sort_keys=True)
+                                    json.dumps(schema, indent=4, 
+                                               sort_keys=True).replace("\\", "\\\\")
                                 )
 
                 # TODO: At this stage we do not look at the type of security, we
