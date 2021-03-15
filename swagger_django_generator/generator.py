@@ -144,7 +144,9 @@ def path_to_class_name(path):
     character_map = {
         ord("{"): None,
         ord("}"): None,
-        ord("_"): u"/"
+        ord("_"): u"/",
+        ord("-"): u"_",
+        ord("."): u"_dot_",
     }
     sanitised = path.translate(character_map)
     class_name = u"".join(
