@@ -173,7 +173,9 @@ def path_to_operation(path, verb):
     character_map = {
         ord("{"): None,
         ord("}"): None,
-        ord("_"): u"/"
+        ord("_"): u"/",
+        ord("-"): u"_",
+        ord("."): u"_dot_",
     }
     if path == u"/":
         operation = ROOT_OPERATION
